@@ -8,11 +8,12 @@ lib-cov
 *.out
 *.pid
 *.gz
+.js
 
 pids
 logs
 results
-/lib
 
 npm-debug.log
 node_modules
+build
