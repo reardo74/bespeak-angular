@@ -4,10 +4,21 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     ngtemplates:  {
       bespeak:        {
-        src:      'src/**/*.html',
+        cwd:      'src/',
+        src:      'templates/**.html',
         dest:     'build/bespeak.templates.js',
         options:    {
-          htmlmin:  { collapseWhitespace: true, collapseBooleanAttributes: true }
+          url:    function(url) { return url.replace('.html', ''); },
+          htmlmin: {
+            collapseBooleanAttributes:      true,
+            collapseWhitespace:             true,
+            removeAttributeQuotes:          true,
+            removeComments:                 true, // Only if you don't use comment directives!
+            removeEmptyAttributes:          true,
+            removeRedundantAttributes:      true,
+            removeScriptTypeAttributes:     true,
+            removeStyleLinkTypeAttributes:  true
+          }
         }
       }
     },
