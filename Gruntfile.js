@@ -30,6 +30,7 @@ module.exports = function(grunt) {
         src: ['src/bootstrap/ui-bootstrap-tpls-0.4.0.min.js', 
               'src/angular-payments/angular-payments.js',
               'src/bespeak.js',
+              'src/bespeak-controller-payment.js',
               'src/bespeak-controller-progress.js',
               'src/bespeak-controller-schedule.js',
               'src/bespeak-controller-reservation.js',
