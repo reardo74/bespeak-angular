@@ -1,0 +1,43 @@
+<form name='reservation' ng-submit="navigate('/payment', true)" novalidate>
+	<fieldset class='reservation-details'>
+		<legend>Your Reservation Details</legend>
+
+		<div class="course-details">
+			<span class="name">{{course.courseName}}</span>
+			<span class="office">{{course.officeName}}</span>
+			<span class="date-info">
+				{{course.startDate | date:"EEEE M/d/yy 'from' h:mm a" }} to {{course.endDate | date:'h:mm a'}}
+			</span>
+		</div>
+		<div class="control-group" ng-class="{'error': !reservation.email.$valid && submitted}">
+			<label class="control-label" for="inputEmail">Email</label>
+			<div class="controls">
+				<input type="email" name="email" id="inputEmail" placeholder="Email" ng-model='form.email' required >
+				<span class="help-inline" ng-hide="reservation.email.$valid || !submitted">Please enter a valid email address.</span>
+			</div>
+		</div>
+		<div class="booking-details control-group"  ng-class="{'error': !reservation.attendees.$valid && submitted}">
+			<label class="control-label" for="attendees">
+				How many people?
+			</label>
+			<input name="attendees" type="number" id="attendees" class="attendee-selector" ng-model='form.attendees' value="{{form.attendees}}" min="1" max="10" size="2" required/>
+			<span class="help-inline" ng-hide="reservation.attendees.$valid || !submitted">Please specify the number of attendees.</span>
+
+			<div class="price">
+				<span class="attendees">{{form.attendees}}</span>
+				<span class="multiply">&times;</span>
+				<span class="cost">{{course.cost | currency:"$"}}</span>
+				<span class="equals">=</span>
+				<span class="total">{{course.cost * form.attendees | currency:"$"}}
+			</div>
+		</div>
+	</fieldset>
+	<fieldset>
+		<button ng-click="navigate('/')" class="btn btn-info">
+			Previous
+		</button>
+		<button type="submit" class="btn btn-primary">
+			Next
+		</button>
+	</fieldset>
+</form>

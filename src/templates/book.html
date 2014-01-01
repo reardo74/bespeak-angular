@@ -1,0 +1,12 @@
+<form name='schedule' ng-submit="navigate('/reservation/'+form.course.id, true)" novalidate>
+  <fieldset>
+    <legend>Schedule Your Course</legend>
+    <select class="input-xxlarge" data-ng-model="form.course_id" data-ng-options="course.id as course|course:'START &mdash; OFFICE' for course in courses | filter:course_filter | orderBy:start_at" required>
+    </select>
+  </fieldset>
+  <fieldset>
+    <button type="submit" class="btn btn-primary">
+      Next
+    </button>
+  </fieldset>
+</form>

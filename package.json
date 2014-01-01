@@ -1,0 +1,33 @@
+{
+  "name": "bespeak-angular",
+  "description": "Client side interface for bespeak booking",
+  "version": "0.0.1",
+  "homepage": "https://github.com/yosem/bespeak-angular",
+  "author": {
+    "name": "Yosem Sweet",
+    "email": "yosem@crowdvert.com",
+    "url": "crowdvert.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yosem/bespeak-angular.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yosem/bespeak-angular/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "main": "lib/bespeak-angular",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-cli": "~0.1.7",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-concat": "~0.2.0",
+    "grunt-contrib-connect": "~0.5.0",
+    "grunt-angular-templates": "~0.5.1"
+  }
+}
