@@ -17,6 +17,7 @@ function($scope, $location, $routeParams, $q, _bspApi, _bspReservation) {
 	
 	$scope.form = { email: null, attendees: 1 };
 	$scope.navigate = function(next, validate) {
+		if(next == 'orderPath') { next = window._bspConfig.orderPath; }
 		if(!validate ||$scope.reservation.$valid) {	
 			$location.path(next);
 		} else {

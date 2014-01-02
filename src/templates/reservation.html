@@ -1,4 +1,4 @@
-<form name='reservation' ng-submit="navigate('/payment', true)" novalidate>
+<form id='_bsp-reservation' name='reservation' ng-submit="navigate('/payment', true)" novalidate>
 	<fieldset class='reservation-details'>
 		<legend>Your Reservation Details</legend>
 
@@ -33,7 +33,7 @@
 		</div>
 	</fieldset>
 	<fieldset>
-		<button ng-click="navigate('/')" class="btn btn-info">
+		<button ng-click="navigate('orderPath', false)" class="btn btn-info">
 			Previous
 		</button>
 		<button type="submit" class="btn btn-primary">

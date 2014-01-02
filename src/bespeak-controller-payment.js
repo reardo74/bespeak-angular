@@ -2,6 +2,7 @@ angular.module('bespeak.payment',['ui.bootstrap', 'bespeak.services', 'angularPa
 function($scope, $location, $q, _bspApi, _bspReservation, _bspAlerts) {
 	$scope.course = _bspReservation.course();
 	$scope.attendees = _bspReservation.attendees();
+	$scope.email = _bspReservation.email();
 	$scope.form = {};
 	
 	var paymentDetailsCache = {
@@ -41,7 +42,7 @@ function($scope, $location, $q, _bspApi, _bspReservation, _bspAlerts) {
 		var paymentDetails = resolveds[4];
 		if(!course) { 
 			_bspAlerts.addPending({type:'warning', msg:'Please select your course'});
-			$location.path('/'); 
+			$location.path(window._bspConfig.orderPath); 
 		}
 		
 		if(paymentMethod) { $scope.form.paymentMethod = paymentMethod; }

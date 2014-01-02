@@ -1,4 +1,4 @@
-<form name='payment' ng-submit="book()" novalidate>
+<form id='_bsp-payment' name='payment' ng-submit="book()" novalidate>
 	<fieldset class='reservation-details'>
 		<legend>Your Reservation Details</legend>
 		<div class="course-details">
@@ -7,16 +7,19 @@
 			<span class="date-info">
 				{{course.startDate | date:"EEEE M/d/yy 'from' h:mm a" }} to {{course.endDate | date:'h:mm a'}}
 			</span>
-		</div>
-		<div class="price">
 			<span class="attendees">{{attendees}}</span>
-			<span class="multiply">&times;</span>
-			<span class="cost">{{course.cost | currency:"$"}}</span>
-			<span class="equals">=</span>
-			<span class="total">{{course.cost * attendees | currency:"$"}}
+			<span class="email">{{email}}</span>
+			<div class="price">
+				<span class="attendees">{{attendees}}</span>
+				<span class="multiply">&times;</span>
+				<span class="cost">{{course.cost | currency:"$"}}</span>
+				<span class="equals">=</span>
+				<span class="total">{{course.cost * attendees | currency:"$"}}
+			</div>
 		</div>
+
 	</fieldset>
-	<fieldset>
+	<fieldset class='payment-options'>
 		<legend>How Would You Like to Pay?</legend>
 		<label class="radio inline">
 			<input type="radio" value="credit_card" ng-model='form.paymentMethod'>
