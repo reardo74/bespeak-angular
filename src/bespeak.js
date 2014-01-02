@@ -6,7 +6,7 @@ bespeak.config(['$locationProvider', function($locationProvider) {
 
 bespeak.config(['$routeProvider', function($routeProvider) {
 	$routeProvider.
-		when('/', {templateUrl: "templates/book", controller: "ScheduleCtrl"}).
+		when(window._bspConfig.orderPath, {templateUrl: "templates/book", controller: "ScheduleCtrl"}).
 		when('/reservation/:courseId', {templateUrl: "templates/reservation", controller: "ReservationCtrl"}).
 		when('/payment', {templateUrl: "templates/payment", controller: "PaymentCtrl"}).
 		otherwise({redirect_to: "fukenhel"});

@@ -2,7 +2,8 @@ var bespeakProgress = angular.module('bespeak.progress',['ui.bootstrap', 'bespea
 
 bespeakProgress.controller("ProgressCtrl", ['$scope', '$location', '_bspReservation', function($scope, $location, _bspReservation) {
 	var reservationPath = '/reservation/';
-	var pages = ['/', reservationPath, '/payment']
+	var paymentPath = '/payment';
+	var pages = [window._bspConfig.orderPath, reservationPath, paymentPath]
 	$scope.course = _bspReservation.course();
 	
 	_bspReservation.watch('course', function(newVal, oldVal) { 
