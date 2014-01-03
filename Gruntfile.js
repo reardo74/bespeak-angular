@@ -15,7 +15,6 @@ module.exports = function(grunt) {
             removeAttributeQuotes:          true,
             removeComments:                 true, // Only if you don't use comment directives!
             removeEmptyAttributes:          true,
-            removeRedundantAttributes:      true,
             removeScriptTypeAttributes:     true,
             removeStyleLinkTypeAttributes:  true
           }
@@ -46,7 +45,7 @@ module.exports = function(grunt) {
     },
     uglify: {
       options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\\n'
+        banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
       },
       dist: {
         files: {

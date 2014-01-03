@@ -21,25 +21,27 @@
 	</fieldset>
 	<fieldset class='payment-options'>
 		<legend>How Would You Like to Pay?</legend>
-		<label class="radio inline">
-			<input type="radio" value="credit_card" ng-model='form.paymentMethod'>
-			Credit&nbsp;Card
-		</label>
+		<p>You can pay now with a credit card or pay later with cash.</p>
 		<label class="radio inline">
 			<input type="radio" value="cash" ng-model='form.paymentMethod'>
-			Cash
+			Cash - pay later
+		</label>
+		<label class="radio inline">
+			<input type="radio" value="credit_card" ng-model='form.paymentMethod'>
+			Credit&nbsp;Card - pay now
 		</label>
 		<label class="radio inline">
 			<input type="radio" value="coupon" ng-model='form.paymentMethod'>
-			Coupon
+			Coupon - pay now
 		</label>
 	</fieldset>
 	<div id='payment-details' ng-switch on="form.paymentMethod">
 		<section id="pay-cash" ng-switch-when="cash">
 			<fieldset class="payment-options">
-				<div class="alert warning">
-					<strong>Please be prepared to pay course fees by cash or check when arriving to class.</strong>
-				</div>
+				<h4>Pay by Cash</h4>
+				<p class="text-warning">
+					Please be prepared to pay course fees by cash or check when arriving to class.
+				</p>
 				<div class="payment-details">
 					<div class="due">
 						<div class="due-now" for="due-now">
@@ -64,6 +66,7 @@
 		</section>
 		<section id="pay-credit_card" ng-switch-when="credit_card">
 			<fieldset class="payment-options">
+				<h4>Pay by Credit Card</h4>
 				<div class="payment-details">
 					<div class="due">
 						<div class="due-now">Total Due Now</div>
@@ -77,7 +80,7 @@
 				</div>
 				<div class="control-group" ng-class="{'error': !payment.creditCardNumber.$valid && submitted}">
 					<label for="credit-card-number">Card Number</label>
-					<input autocomplete="off" class="input-xlarge" id="credit-card-number" ng-model="form.paymentDetails.creditCardNumber" size="20" input type="text" payments-format="card" payments-validate="card" required name="creditCardNumber" payments-type-model="type" ng-class="form.paymentDetails.type">
+					<input autocomplete="off" class="input-xlarge" id="credit-card-number" ng-model="form.paymentDetails.creditCardNumber" size="20" type="text" payments-format="card" payments-validate="card" required name="creditCardNumber" payments-type-model="type" ng-class="form.paymentDetails.type">
 					<span class="help-inline" ng-hide="payment.creditCardNumber.$valid || !submitted">Please enter a valid credit card number.</span>
 					<div class="acceptedCards">
 						<img alt="Visa" class="fsCreditCardLogo" src="//dts8zy8jzywwi.cloudfront.net/37/assets/visa.png">
@@ -88,7 +91,7 @@
 				</div>
 				<div class="control-group creditCardExp" ng-class="{'error': !payment.creditCardExp.$valid && submitted}">
 					<label class="required" for="credit-card-exp-month">Expiration Date</label>
-					<input class="input-small" name="creditCardExp" id="credit-card-exp" ng-model="form.paymentDetails.creditCardExp"  type="text" payments-format="expiry" payments-validate="expiry"/>
+					<input class="input-small" name="creditCardExp" id="credit-card-exp" placeholder="MM/YY" ng-model="form.paymentDetails.creditCardExp"  type="text" payments-format="expiry" payments-validate="expiry"/>
 					<span class="help-inline" ng-hide="payment.creditCardExp.$valid || !submitted">Please enter a valid expiration date.</span>
 				</div>
 				<div class="control-group creditCardCCV" ng-class="{'error': !payment.creditCardCCV.$valid && submitted}">
@@ -100,6 +103,7 @@
 		</section>
 		<section id="pay-coupon" ng-switch-when="coupon">
 			<fieldset class="payment-options">
+				<h4>Pay by Coupon</h4>
 				<div class="payment-details">
 					<div class="due">
 						<div class="due-now" for="due-now">
@@ -130,7 +134,7 @@
 			Previous
 		</button>
 		<button class="btn btn-primary" type="submit">
-			Book
+			Complete Your Registration
 		</button>
 	</fieldset>
 </form>
