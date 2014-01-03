@@ -1,6 +1,9 @@
 angular.module('bespeak.schedule',['ui.bootstrap', 'bespeak.services']).controller("ScheduleCtrl", ['$scope', '$q', '$location', '$filter', '_bspApi', '_bspReservation', 
 function($scope, $q, $location, $filter, _bspApi, _bspReservation) {
-	var filters = { courseName: decodeURIComponent($location.search()['course-type']), officeName: decodeURIComponent($location.search()['office'])};
+	var filters = { 
+		courseName: decodeURIComponent($location.search()['course-type'] || ''), 
+		officeName: decodeURIComponent($location.search()['office'] || '')
+	};
 
 	$scope.courses = _bspApi.courses();
 	
