@@ -6,6 +6,7 @@ function($scope, $q, $location, $filter, _bspApi, _bspReservation) {
 	};
 
 	$scope.courses = _bspApi.courses();
+	$scope.filtered_courses = 
 	
 	$scope.course = _bspReservation.course();
 	$scope.form = { course_id: null };
@@ -23,11 +24,13 @@ function($scope, $q, $location, $filter, _bspApi, _bspReservation) {
 		var reservationCourse = _bspReservation.course();
 		if(reservationCourse) {
 			reservationCourse.then(function(c) {
-				if(c && _bspApi.get_course(c.id)) { $scope.course = reservationCourse; }
+				if(c && _bspApi.get_course(c.id)) { 
+					$scope.course = reservationCourse; 
+				}
+				else { 
+					$scope.course = $filter('filter')(courses, filters)[0]; 
+				}
 			});
-		}
-		else {
-			$scope.course = $filter('filter')(courses, filters)[0];
 		}
 	});
 	
