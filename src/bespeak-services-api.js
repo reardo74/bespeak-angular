@@ -31,7 +31,7 @@ angular.module('bespeak.services.api', []).factory('_bspApi', ['$http', '$cacheF
 					course.courseName = course_type.name;
 					course.cost = course_type.cost;
 					course.officeName = office.name;
-					course.officeTimeZoneOffset = office.timeZoneOffset;
+					course.officeTimeZoneOffset = course.timeZoneOffset;
 					course.startDate = localTime(course.start_at, course.officeTimeZoneOffset);
 					course.endDate = localTime(course.end_at, course.officeTimeZoneOffset);
 					return course;
