@@ -12,7 +12,7 @@ angular.module('bespeak.services.api', []).factory('_bspApi', ['$http', '$cacheF
 	    }
 	    return null;
 		}
-		
+
 		var bespeakServer = window._bspConfig.server;
 		var bespeakAccount = window._bspConfig.account;
 		var cache = $cacheFactory('_bspCache');
@@ -22,10 +22,11 @@ angular.module('bespeak.services.api', []).factory('_bspApi', ['$http', '$cacheF
 			promise.success(function(data, status, headers, config) {
 				var fleshOutCourse = function(course, course_types, offices) {
 					function localTime(time, timeZoneOffset) {
-						var localOffset = new Date().getTimezoneOffset()*60;
+						var localOffset = new Date(time * 1000);
+						localoffset.getTimezoneOffset()*60;
 						return new Date(time*1000 + (timeZoneOffset + localOffset) * 1000);
 					}
-					
+
 					var course_type = getObjectById(course_types, course.course_type_id);
 					var office = getObjectById(offices, course.office_id);
 					course.courseName = course_type.name;
@@ -36,12 +37,12 @@ angular.module('bespeak.services.api', []).factory('_bspApi', ['$http', '$cacheF
 					course.endDate = localTime(course.end_at, course.officeTimeZoneOffset);
 					return course;
 				}
-				
+
 				var courses = [];
 				angular.forEach(data.courses, function(c, index){
 				  courses.push(fleshOutCourse(c, data.course_types, data.offices));
 				});
-				
+
 				bespeak_data.courses.resolve(courses);
 				bespeak_data.offices.resolve(data.offices);
 				bespeak_data.course_types.resolve(data.course_types);
@@ -53,16 +54,16 @@ angular.module('bespeak.services.api', []).factory('_bspApi', ['$http', '$cacheF
 				bespeak_data.offices.reject();
 				bespeak_data.course_types.reject();
 		  });
-		
-		
-		
+
+
+
 		this.courses = function() {
 			return bespeak_data.courses.promise;
 		};
 		this.get_course = function(id) {
 			return this.courses().then(
-				function(data){ 
-					return getObjectById(data, id); 
+				function(data){
+					return getObjectById(data, id);
 				}
 			);
 		}
@@ -78,12 +79,12 @@ angular.module('bespeak.services.api', []).factory('_bspApi', ['$http', '$cacheF
 		this.get_course_type = function(id) {
 			return this.course_types().then(
 				function(data) {
-					return getObjectById(data, id); 
+					return getObjectById(data, id);
 				}
 			);
 		};
 		this.book = function(reservation) {
-			
+
 			function _buildPaymentDetails(reservation) {
 				var paymentDetails = { }
 				switch(reservation.paymentMethod) {
@@ -98,10 +99,10 @@ angular.module('bespeak.services.api', []).factory('_bspApi', ['$http', '$cacheF
 				}
 				return paymentDetails;
 			}
-			
+
 			return reservation.resolve().then(function(reservation) {
-				var payload = { 
-					email: reservation.email, 
+				var payload = {
+					email: reservation.email,
 			    attendees: reservation.attendees,
 			    course_id: reservation.course.id,
 					name: reservation.name,
