@@ -22,8 +22,7 @@ angular.module('bespeak.services.api', []).factory('_bspApi', ['$http', '$cacheF
 			promise.success(function(data, status, headers, config) {
 				var fleshOutCourse = function(course, course_types, offices) {
 					function localTime(time, timeZoneOffset) {
-						var localOffset = new Date(time * 1000);
-						localoffset.getTimezoneOffset()*60;
+						var localOffset = new Date(time * 1000).getTimezoneOffset()*60;
 						return new Date(time*1000 + (timeZoneOffset + localOffset) * 1000);
 					}
 
